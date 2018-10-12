@@ -20,6 +20,7 @@ namespace ShopIS
             //Naloadime vsetko co mame v databaze, ved moze mat niekto nieco ulozene
             ReloadCustomers();
             ReloadProducts();
+            ReloadOrders();
         }
 
         private void dataGridCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -56,6 +57,18 @@ namespace ShopIS
             ReloadProducts();
         }
 
+        private void newOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addOrder = new AddOrder();
+            addOrder.FormClosed += new FormClosedEventHandler(AddOrderForm_FormClosed);
+            addOrder.Show();
+        }
+
+        private void AddOrderForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ReloadOrders();
+        }
+
         private void ReloadCustomers()
         {
             dataGridCustomers.Rows.Clear();
@@ -78,6 +91,16 @@ namespace ShopIS
             foreach (var product in products)
             {
                 dataGridProducts.Rows.Add(product.Id, product.Price.ToString(), product.Description);
+            }
+        }
+        
+        private void ReloadOrders()
+        {
+            dataGridOrders.Rows.Clear();
+            var orders = new DatabaseOperations().GetCollection<Order>("orders").FindAll();
+            foreach (var order in orders)
+            {
+                dataGridProducts.Rows.Add(order.Id, order.OrderDate, order.Customer.Name, string.Join(", ", order.Products));
             }
         }
     }

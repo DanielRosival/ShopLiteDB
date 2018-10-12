@@ -31,20 +31,25 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabCustomers = new System.Windows.Forms.TabPage();
             this.dataGridCustomers = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabProducts = new System.Windows.Forms.TabPage();
             this.dataGridProducts = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabOrders = new System.Windows.Forms.TabPage();
             this.dataGridOrders = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Products = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainTabControl.SuspendLayout();
             this.tabCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomers)).BeginInit();
@@ -93,6 +98,24 @@
             this.dataGridCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCustomers_CellContentClick);
             this.dataGridCustomers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCustomers_CellContentDoubleClick);
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "Meno zakaznika";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            // 
+            // dataGridCustomersDelete
+            // 
+            this.dataGridCustomersDelete.HeaderText = "Vymazat";
+            this.dataGridCustomersDelete.Name = "dataGridCustomersDelete";
+            this.dataGridCustomersDelete.Text = "Delete";
+            // 
             // tabProducts
             // 
             this.tabProducts.Controls.Add(this.dataGridProducts);
@@ -118,75 +141,6 @@
             this.dataGridProducts.Size = new System.Drawing.Size(757, 404);
             this.dataGridProducts.TabIndex = 0;
             // 
-            // tabOrders
-            // 
-            this.tabOrders.Controls.Add(this.dataGridOrders);
-            this.tabOrders.Location = new System.Drawing.Point(4, 22);
-            this.tabOrders.Name = "tabOrders";
-            this.tabOrders.Size = new System.Drawing.Size(767, 414);
-            this.tabOrders.TabIndex = 2;
-            this.tabOrders.Text = "Objednavky";
-            this.tabOrders.UseVisualStyleBackColor = true;
-            // 
-            // dataGridOrders
-            // 
-            this.dataGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridOrders.Location = new System.Drawing.Point(4, 4);
-            this.dataGridOrders.Name = "dataGridOrders";
-            this.dataGridOrders.Size = new System.Drawing.Size(760, 407);
-            this.dataGridOrders.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newCustomerToolStripMenuItem,
-            this.newProductToolStripMenuItem});
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.addToolStripMenuItem.Text = "Add";
-            // 
-            // newCustomerToolStripMenuItem
-            // 
-            this.newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
-            this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.newCustomerToolStripMenuItem.Text = "New customer";
-            this.newCustomerToolStripMenuItem.Click += new System.EventHandler(this.newCustomerToolStripMenuItem_Click);
-            // 
-            // newProductToolStripMenuItem
-            // 
-            this.newProductToolStripMenuItem.Name = "newProductToolStripMenuItem";
-            this.newProductToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.newProductToolStripMenuItem.Text = "New product";
-            this.newProductToolStripMenuItem.Click += new System.EventHandler(this.newProductToolStripMenuItem_Click);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "Meno zakaznika";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // dataGridCustomersDelete
-            // 
-            this.dataGridCustomersDelete.HeaderText = "Vymazat";
-            this.dataGridCustomersDelete.Name = "dataGridCustomersDelete";
-            this.dataGridCustomersDelete.Text = "Delete";
-            // 
             // ProductId
             // 
             this.ProductId.HeaderText = "Id";
@@ -204,6 +158,97 @@
             this.Description.HeaderText = "Opis";
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
+            // 
+            // tabOrders
+            // 
+            this.tabOrders.Controls.Add(this.dataGridOrders);
+            this.tabOrders.Location = new System.Drawing.Point(4, 22);
+            this.tabOrders.Name = "tabOrders";
+            this.tabOrders.Size = new System.Drawing.Size(767, 414);
+            this.tabOrders.TabIndex = 2;
+            this.tabOrders.Text = "Objednavky";
+            this.tabOrders.UseVisualStyleBackColor = true;
+            // 
+            // dataGridOrders
+            // 
+            this.dataGridOrders.AllowUserToAddRows = false;
+            this.dataGridOrders.AllowUserToDeleteRows = false;
+            this.dataGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdOrder,
+            this.OrderDate,
+            this.Customer,
+            this.Products});
+            this.dataGridOrders.Location = new System.Drawing.Point(4, 4);
+            this.dataGridOrders.Name = "dataGridOrders";
+            this.dataGridOrders.ReadOnly = true;
+            this.dataGridOrders.Size = new System.Drawing.Size(760, 407);
+            this.dataGridOrders.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCustomerToolStripMenuItem,
+            this.newProductToolStripMenuItem,
+            this.newOrderToolStripMenuItem});
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // newCustomerToolStripMenuItem
+            // 
+            this.newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
+            this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newCustomerToolStripMenuItem.Text = "New customer";
+            this.newCustomerToolStripMenuItem.Click += new System.EventHandler(this.newCustomerToolStripMenuItem_Click);
+            // 
+            // newProductToolStripMenuItem
+            // 
+            this.newProductToolStripMenuItem.Name = "newProductToolStripMenuItem";
+            this.newProductToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newProductToolStripMenuItem.Text = "New product";
+            this.newProductToolStripMenuItem.Click += new System.EventHandler(this.newProductToolStripMenuItem_Click);
+            // 
+            // newOrderToolStripMenuItem
+            // 
+            this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
+            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newOrderToolStripMenuItem.Text = "New order";
+            this.newOrderToolStripMenuItem.Click += new System.EventHandler(this.newOrderToolStripMenuItem_Click);
+            // 
+            // IdOrder
+            // 
+            this.IdOrder.HeaderText = "Id";
+            this.IdOrder.Name = "IdOrder";
+            this.IdOrder.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "Datum objednavky";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "Zakaznik";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            // 
+            // Products
+            // 
+            this.Products.HeaderText = "Produkty";
+            this.Products.Name = "Products";
+            this.Products.ReadOnly = true;
             // 
             // MainWindow
             // 
@@ -248,6 +293,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Products;
     }
 }
 

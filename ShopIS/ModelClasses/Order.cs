@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,9 @@ namespace ShopIS.ModelClasses
     {
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
+        [BsonRef("customers")]
         public Customer Customer { get; set; }
+        [BsonRef("products")]
         public List<Product> Products { get; set; }
     }
 }
