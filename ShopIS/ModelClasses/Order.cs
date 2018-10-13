@@ -14,6 +14,6 @@ namespace ShopIS.ModelClasses
         [BsonRef("customers")]
         public Customer Customer { get; set; }
         [BsonRef("products")]
-        public List<Product> Products { get; set; }
+        public List<Product> Products { get; set; }                
     }
 }

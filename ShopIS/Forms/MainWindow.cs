@@ -97,10 +97,10 @@ namespace ShopIS
         private void ReloadOrders()
         {
             dataGridOrders.Rows.Clear();
-            var orders = new DatabaseOperations().GetCollection<Order>("orders").FindAll();
+            var orders = new DatabaseOperations().GetCollection<Order>("orders").Include(x => x.Customer).Include(x => x.Products).FindAll();
             foreach (var order in orders)
             {
-                dataGridProducts.Rows.Add(order.Id, order.OrderDate, order.Customer.Name, string.Join(", ", order.Products));
+                dataGridOrders.Rows.Add(order.Id, order.OrderDate, order.Customer.Name, string.Join(", ", order.Products));
             }
         }
     }
