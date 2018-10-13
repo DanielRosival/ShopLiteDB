@@ -33,6 +33,26 @@ namespace ShopIS
 
         }
 
+        private void dataGridProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridProducts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var addCustomer = new AddCustomer();
