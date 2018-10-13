@@ -46,5 +46,11 @@ namespace ShopIS
             var objects = GetCollection<T>(name);
             objects.Insert(objToInsert);
         }
+
+        public void DeleteObject<T>(string name, int id)
+        {
+            var objects = GetCollection<T>(name);
+            objects.Delete(new BsonValue(id));
+        }
     }
 }

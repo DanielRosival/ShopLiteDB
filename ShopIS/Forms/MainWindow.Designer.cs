@@ -40,9 +40,6 @@
             this.newCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +49,9 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteProduct = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CustomersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.mainTabControl.SuspendLayout();
             this.tabCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomers)).BeginInit();
@@ -90,7 +90,7 @@
             this.dataGridCustomers.AllowUserToDeleteRows = false;
             this.dataGridCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
+            this.CustomersID,
             this.CustomerName,
             this.dataGridCustomersDelete});
             this.dataGridCustomers.Location = new System.Drawing.Point(3, 3);
@@ -198,25 +198,6 @@
             this.newOrderToolStripMenuItem.Text = "New order";
             this.newOrderToolStripMenuItem.Click += new System.EventHandler(this.newOrderToolStripMenuItem_Click);
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "Meno zakaznika";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // dataGridCustomersDelete
-            // 
-            this.dataGridCustomersDelete.HeaderText = "Vymazat";
-            this.dataGridCustomersDelete.Name = "dataGridCustomersDelete";
-            this.dataGridCustomersDelete.Text = "Delete";
-            this.dataGridCustomersDelete.UseColumnTextForButtonValue = true;
-            // 
             // IdOrder
             // 
             this.IdOrder.HeaderText = "Id";
@@ -278,6 +259,25 @@
             this.DeleteProduct.Text = "Delete";
             this.DeleteProduct.UseColumnTextForButtonValue = true;
             // 
+            // CustomersID
+            // 
+            this.CustomersID.HeaderText = "Id";
+            this.CustomersID.Name = "CustomersID";
+            this.CustomersID.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "Meno zakaznika";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            // 
+            // dataGridCustomersDelete
+            // 
+            this.dataGridCustomersDelete.HeaderText = "Vymazat";
+            this.dataGridCustomersDelete.Name = "dataGridCustomersDelete";
+            this.dataGridCustomersDelete.Text = "Delete";
+            this.dataGridCustomersDelete.UseColumnTextForButtonValue = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,9 +316,6 @@
         private System.Windows.Forms.ToolStripMenuItem newCustomerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProductToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridCustomersDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
@@ -328,6 +325,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Products;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomersID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridCustomersDelete;
     }
 }
 

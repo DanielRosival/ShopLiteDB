@@ -24,8 +24,12 @@ namespace ShopIS
         }
 
         private void dataGridCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+        {            
+            if (dataGridCustomers.Columns[e.ColumnIndex].Name.Equals("dataGridCustomersDelete"))
+            {
+                int idCustomer = (int) dataGridCustomers.Rows[e.RowIndex].Cells[0].Value;
+                new DatabaseOperations().DeleteObject<Customer>("customers", idCustomer);
+            }
         }
 
         private void dataGridCustomers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
