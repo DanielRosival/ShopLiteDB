@@ -2,12 +2,7 @@
 using ShopIS.ModelClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShopIS
@@ -24,11 +19,20 @@ namespace ShopIS
         }
 
         private void dataGridCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {            
+        {
             if (dataGridCustomers.Columns[e.ColumnIndex].Name.Equals("dataGridCustomersDelete"))
             {
-                int idCustomer = (int) dataGridCustomers.Rows[e.RowIndex].Cells[0].Value;
-                new DatabaseOperations().DeleteObject<Customer>("customers", idCustomer);
+                DatabaseOperations dbOperations = new DatabaseOperations();
+                int idCustomer = (int)dataGridCustomers.Rows[e.RowIndex].Cells[0].Value;
+                if (!(new Customer(idCustomer).CheckIfHasOrders()))
+                {
+                    dbOperations.DeleteObject<Customer>("customers", idCustomer);
+                    ReloadCustomers();
+                }
+                else
+                {
+                    new ErrorForm("Nie je mozne zmazat, na zakaznika je vytvorena objednavka, najprv je potrebne zrusit tu.").Show();
+                }
             }
         }
 
@@ -39,7 +43,20 @@ namespace ShopIS
 
         private void dataGridProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (dataGridProducts.Columns[e.ColumnIndex].Name.Equals("DeleteProduct"))
+            {
+                DatabaseOperations dbOperations = new DatabaseOperations();
+                int idProduct = (int)dataGridProducts.Rows[e.RowIndex].Cells[0].Value;
+                if (!(new Product(idProduct).CheckIfHasOrders()))
+                {
+                    dbOperations.DeleteObject<Product>("products", idProduct);
+                    ReloadProducts();
+                }
+                else
+                {
+                    new ErrorForm("Nie je mozne zmazat, na tovar je vytvorena objednavka, najprv je potrebne zrusit tu.").Show();
+                }
+            }
         }
 
         private void dataGridProducts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -49,29 +66,34 @@ namespace ShopIS
 
         private void dataGridOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (dataGridOrders.Columns[e.ColumnIndex].Name.Equals("DeleteOrder"))
+            {
+                int idOrder = (int)dataGridOrders.Rows[e.RowIndex].Cells[0].Value;
+                new DatabaseOperations().DeleteObject<Order>("orders", idOrder);
+                ReloadOrders();
+            }
         }
 
         private void dataGridOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var addCustomer = new AddCustomer();
+            AddCustomer addCustomer = new AddCustomer();
             addCustomer.FormClosed += new FormClosedEventHandler(AddCustomerForm_FormClosed);
             addCustomer.Show();
         }
 
         private void AddCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ReloadCustomers();            
+            ReloadCustomers();
         }
 
         private void newProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var addProduct = new AddProduct();
+            AddProduct addProduct = new AddProduct();
             addProduct.FormClosed += new FormClosedEventHandler(AddProductForm_FormClosed);
             addProduct.Show();
         }
@@ -83,7 +105,7 @@ namespace ShopIS
 
         private void newOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var addOrder = new AddOrder();
+            AddOrder addOrder = new AddOrder();
             addOrder.FormClosed += new FormClosedEventHandler(AddOrderForm_FormClosed);
             addOrder.Show();
         }
@@ -102,7 +124,7 @@ namespace ShopIS
             //bolo trocha zlozite. Podstatne vieme este na to zavolat metodu ToList() - list je asi najpouzivanejsia kolekcia je to ekvivalent c++ vektoru
             //v c# t.j. pole s automatickym riadenim pameti.
             List<Customer> customers = new DatabaseOperations().GetCollection<Customer>("customers").FindAll().ToList();
-            foreach (var customer in customers)
+            foreach (Customer customer in customers)
             {
                 dataGridCustomers.Rows.Add(customer.Id, customer.Name);
             }
@@ -111,18 +133,18 @@ namespace ShopIS
         private void ReloadProducts()
         {
             dataGridProducts.Rows.Clear();
-            var products = new DatabaseOperations().GetCollection<Product>("products").FindAll();
-            foreach (var product in products)
+            IEnumerable<Product> products = new DatabaseOperations().GetCollection<Product>("products").FindAll();
+            foreach (Product product in products)
             {
                 dataGridProducts.Rows.Add(product.Id, product.Price.ToString(), product.Description);
             }
         }
-        
+
         private void ReloadOrders()
         {
             dataGridOrders.Rows.Clear();
-            var orders = new DatabaseOperations().GetCollection<Order>("orders").Include(x => x.Customer).Include(x => x.Products).FindAll();
-            foreach (var order in orders)
+            IEnumerable<Order> orders = new DatabaseOperations().GetCollection<Order>("orders").Include(x => x.Customer).Include(x => x.Products).FindAll();
+            foreach (Order order in orders)
             {
                 dataGridOrders.Rows.Add(order.Id, order.OrderDate, order.Customer.Name, string.Join(", ", order.Products));
             }

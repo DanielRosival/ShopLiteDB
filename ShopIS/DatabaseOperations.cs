@@ -27,7 +27,7 @@ namespace ShopIS
             //Premennu ktoru budeme returnovat si musime zadefinovat pred usingom, keby sme mali definiciu vnutri, tak nam to zanikne po skonceni.
             //
             //ConfigurationManager - treba si pridat !using System.Configuration;! a takisto referenciu. To sa spravi tak, ze kliknete pravym tlacitkom na
-            //references a tam vyhladate System.Configuration a zaskrtnente. Tymto sposobom vieme pristupovat k hodnotam z App.config - je to subor v projekte,
+            //References a tam vyhladate System.Configuration a zaskrtnente. Tymto sposobom vieme pristupovat k hodnotam z App.config - je to subor v projekte,
             //vzdy tam je. Sluzi na to, ze tam si viete zadefinovat nejake hodnoty, ktora sa daju nastavit aj po instalacii programu na iny pocitac, ked si chcete nieco
             //nakonfigurovat a nemusite chodit do kodu. Tento subor zostava normalny aj po kompilacii a po instalacii skompilovanych suborov je normalne pristupny.
             //V beznej praxy sa tam dava aj tzv. ConnectionString na databazu (adresa serveru atd....) u nas teraz meno/cesta k suboru.
@@ -45,7 +45,7 @@ namespace ShopIS
         {
             var objects = GetCollection<T>(name);
             objects.Insert(objToInsert);
-        }
+        }        
 
         public void DeleteObject<T>(string name, int id)
         {

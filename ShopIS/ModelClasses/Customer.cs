@@ -18,5 +18,20 @@ namespace ShopIS.ModelClasses
                     // aj .NET ma toho vela, staci pohladat
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public Customer()
+        { }
+
+        public Customer(int id)
+        {
+            var obj = new DatabaseOperations().GetCollection<Customer>("customers").FindById(id);
+            Id = obj.Id;
+            Name = obj.Name;
+        }
+
+        public bool CheckIfHasOrders()
+        {
+            return new DatabaseOperations().GetCollection<Order>("orders").Find(x => x.Customer.Id == this.Id).Any();
+        }
     }
 }
