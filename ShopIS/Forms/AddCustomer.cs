@@ -25,7 +25,6 @@ namespace ShopIS.Forms
             InitializeComponent();
             CustomerObject = new Customer(id);
             tbName.Text = CustomerObject.Name;
-            string[] lines = { "adasdls" };
         }
 
         private void btAddCustomer_Click(object sender, EventArgs e)
