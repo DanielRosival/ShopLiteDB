@@ -38,7 +38,10 @@ namespace ShopIS
 
         private void dataGridCustomers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            AddCustomer editCustomer = new AddCustomer((int)dataGridCustomers.Rows[e.RowIndex].Cells[0].Value);
+            editCustomer.Text = "Edit customer";
+            editCustomer.FormClosed += new FormClosedEventHandler(AddCustomerForm_FormClosed);
+            editCustomer.Show();
         }
 
         private void dataGridProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -118,11 +121,6 @@ namespace ShopIS
         private void ReloadCustomers()
         {
             dataGridCustomers.Rows.Clear();
-            //Ziskame si kolekciu nasim jemne upravenym sposobom, robim to preto tak, lebo logika aplikacie by mala byt oddelena od vystupu.
-            //FindAll() nam vrati vsetky zaznamy z databazy danej entity v datovom type IEnumerable.
-            //Cez takyto datovy typ vieme iterovat, mozem vysvetlit aj podrobnejsie ako funguje to IEnumerable a interfacy, len na pisanie by to
-            //bolo trocha zlozite. Podstatne vieme este na to zavolat metodu ToList() - list je asi najpouzivanejsia kolekcia je to ekvivalent c++ vektoru
-            //v c# t.j. pole s automatickym riadenim pameti.
             List<Customer> customers = new DatabaseOperations().GetCollection<Customer>("customers").FindAll().ToList();
             foreach (Customer customer in customers)
             {

@@ -33,22 +33,22 @@
             this.dataGridCustomers = new System.Windows.Forms.DataGridView();
             this.tabProducts = new System.Windows.Forms.TabPage();
             this.dataGridProducts = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteProduct = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabOrders = new System.Windows.Forms.TabPage();
             this.dataGridOrders = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Products = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteOrder = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteProduct = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CustomersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -128,6 +128,33 @@
             this.dataGridProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProducts_CellContentClick);
             this.dataGridProducts.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProducts_CellContentDoubleClick);
             // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "Id";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Cena";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Opis";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // DeleteProduct
+            // 
+            this.DeleteProduct.HeaderText = "Delete";
+            this.DeleteProduct.Name = "DeleteProduct";
+            this.DeleteProduct.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteProduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteProduct.Text = "Delete";
+            this.DeleteProduct.UseColumnTextForButtonValue = true;
+            // 
             // tabOrders
             // 
             this.tabOrders.Controls.Add(this.dataGridOrders);
@@ -156,6 +183,40 @@
             this.dataGridOrders.TabIndex = 0;
             this.dataGridOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellContentClick);
             this.dataGridOrders.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellContentDoubleClick);
+            // 
+            // IdOrder
+            // 
+            this.IdOrder.HeaderText = "Id";
+            this.IdOrder.Name = "IdOrder";
+            this.IdOrder.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "Datum objednavky";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "Zakaznik";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            // 
+            // Products
+            // 
+            this.Products.HeaderText = "Produkty";
+            this.Products.Name = "Products";
+            this.Products.ReadOnly = true;
+            // 
+            // DeleteOrder
+            // 
+            this.DeleteOrder.HeaderText = "Delete";
+            this.DeleteOrder.Name = "DeleteOrder";
+            this.DeleteOrder.ReadOnly = true;
+            this.DeleteOrder.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteOrder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteOrder.Text = "Delete";
+            this.DeleteOrder.UseColumnTextForButtonValue = true;
             // 
             // menuStrip1
             // 
@@ -197,67 +258,6 @@
             this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.newOrderToolStripMenuItem.Text = "New order";
             this.newOrderToolStripMenuItem.Click += new System.EventHandler(this.newOrderToolStripMenuItem_Click);
-            // 
-            // IdOrder
-            // 
-            this.IdOrder.HeaderText = "Id";
-            this.IdOrder.Name = "IdOrder";
-            this.IdOrder.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "Datum objednavky";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // Customer
-            // 
-            this.Customer.HeaderText = "Zakaznik";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            // 
-            // Products
-            // 
-            this.Products.HeaderText = "Produkty";
-            this.Products.Name = "Products";
-            this.Products.ReadOnly = true;
-            // 
-            // DeleteOrder
-            // 
-            this.DeleteOrder.HeaderText = "Delete";
-            this.DeleteOrder.Name = "DeleteOrder";
-            this.DeleteOrder.ReadOnly = true;
-            this.DeleteOrder.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteOrder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteOrder.Text = "Delete";
-            this.DeleteOrder.UseColumnTextForButtonValue = true;
-            // 
-            // ProductId
-            // 
-            this.ProductId.HeaderText = "Id";
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Cena";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Opis";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // DeleteProduct
-            // 
-            this.DeleteProduct.HeaderText = "Delete";
-            this.DeleteProduct.Name = "DeleteProduct";
-            this.DeleteProduct.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteProduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteProduct.Text = "Delete";
-            this.DeleteProduct.UseColumnTextForButtonValue = true;
             // 
             // CustomersID
             // 

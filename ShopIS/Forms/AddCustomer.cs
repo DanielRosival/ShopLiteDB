@@ -20,22 +20,37 @@ namespace ShopIS.Forms
             InitializeComponent();
         }
 
+        public AddCustomer(int id)
+        {
+            InitializeComponent();
+            CustomerObject = new Customer(id);
+            tbName.Text = CustomerObject.Name;
+            string[] lines = { "adasdls" };
+        }
+
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
             if (tbName.Text.Equals(string.Empty))
             {
                 new ErrorForm("Vyplnte meno").Show();
             }
-            //Kurzor do objektu a ked stlacite F12 uvidite definiciu/implementaciu.
-            //c# umoznuje nieco taketo co c++ nie, vytvaranie triedy v argumente funkcie. Skratit vam to o jeden riadok program :D 
-            //Dalsia vec co sa da vsimnut, je ze Customer nema ziadny konstruktor kde by som hned dal meno. Presne tymto zapisom to je ale mozne pri vytvoreni
-            //novej triedy spravit. Takze zavolame normalny konstruktor a potom v kuceravych zatvorkach sa daju zadefinovat properties noveho objektu, oddelene ciarkou.
-            new DatabaseOperations().InsertObject("customers", new Customer()
+            if (CustomerObject == null)
             {
-                Name = tbName.Text
-            });
+                new DatabaseOperations().InsertObject("customers", new Customer()
+                {
+                    Name = tbName.Text
+                });
+            }
+            else
+            {
+                CustomerObject.Name = tbName.Text;
+                new DatabaseOperations().UpdateObject("customers", CustomerObject);
+            }
+            
 
             Close();
         }
+
+        public Customer CustomerObject { get; set; }
     }
 }
