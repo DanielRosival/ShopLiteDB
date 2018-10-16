@@ -36,7 +36,7 @@ namespace ShopIS
             }
         }
 
-        private void dataGridCustomers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridCustomers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             AddCustomer editCustomer = new AddCustomer((int)dataGridCustomers.Rows[e.RowIndex].Cells[0].Value);
             editCustomer.Text = "Edit customer";
@@ -62,9 +62,12 @@ namespace ShopIS
             }
         }
 
-        private void dataGridProducts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            AddProduct editProduct = new AddProduct((int)dataGridProducts.Rows[e.RowIndex].Cells[0].Value);
+            editProduct.Text = "Edit product";
+            editProduct.FormClosed += new FormClosedEventHandler(AddProductForm_FormClosed);
+            editProduct.Show();
         }
 
         private void dataGridOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -79,7 +82,10 @@ namespace ShopIS
 
         private void dataGridOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            AddOrder editOrder = new AddOrder((int)dataGridOrders.Rows[e.RowIndex].Cells[0].Value);
+            editOrder.Text = "Edit order";
+            editOrder.FormClosed += new FormClosedEventHandler(AddOrderForm_FormClosed);
+            editOrder.Show();
         }
 
         private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,6 +98,7 @@ namespace ShopIS
         private void AddCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ReloadCustomers();
+            ReloadOrders();
         }
 
         private void newProductToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,6 +111,7 @@ namespace ShopIS
         private void AddProductForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ReloadProducts();
+            ReloadOrders();
         }
 
         private void newOrderToolStripMenuItem_Click(object sender, EventArgs e)

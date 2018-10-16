@@ -19,6 +19,15 @@ namespace ShopIS.Forms
             FillCustomers();
         }
 
+        public AddOrder(int id)
+        {
+            InitializeComponent();
+            OrderObject = new Order(id);
+            tbProductIDs.Text = string.Join(";", OrderObject.Products.Select(x => x.Id));
+            FillCustomers();
+            ddlCustomers.SelectedItem = new Item(OrderObject.Customer.Name, OrderObject.Customer.Id);
+        }
+
         private void btAdd_Click(object sender, EventArgs e)
         {
             if (tbProductIDs.Text.Equals(string.Empty))
@@ -44,12 +53,24 @@ namespace ShopIS.Forms
                 return;
             }
 
-            new DatabaseOperations().InsertObject("orders", new Order()
+            if (OrderObject == null)
             {
-                OrderDate = dtPicker.Value,
-                Customer = new DatabaseOperations().GetCollection<Customer>("customers").FindById((ddlCustomers.SelectedItem as Item).Value),
-                Products = new DatabaseOperations().GetCollection<Product>("products").FindAll().Where(p => productsIds.Contains(p.Id)).ToList()
-            });
+                new DatabaseOperations().InsertObject("orders", new Order()
+                {
+                    OrderDate = dtPicker.Value,
+                    Customer = new DatabaseOperations().GetCollection<Customer>("customers").FindById((ddlCustomers.SelectedItem as Item).Value),
+                    Products = new DatabaseOperations().GetCollection<Product>("products").FindAll().Where(p => productsIds.Contains(p.Id)).ToList()
+                });
+            }
+            else
+            {
+                new DatabaseOperations().UpdateObject("orders", new Order()
+                {
+                    OrderDate = dtPicker.Value,
+                    Customer = new DatabaseOperations().GetCollection<Customer>("customers").FindById((ddlCustomers.SelectedItem as Item).Value),
+                    Products = new DatabaseOperations().GetCollection<Product>("products").FindAll().Where(p => productsIds.Contains(p.Id)).ToList()
+                });
+            }
 
             Close();
         }
@@ -79,5 +100,7 @@ namespace ShopIS.Forms
                 return Name;
             }
         }
+
+        public Order OrderObject { get; set; }
     }
 }

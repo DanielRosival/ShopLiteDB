@@ -14,6 +14,17 @@ namespace ShopIS.ModelClasses
         [BsonRef("customers")]
         public Customer Customer { get; set; }
         [BsonRef("products")]
-        public List<Product> Products { get; set; }                
+        public List<Product> Products { get; set; }
+
+        public Order()
+        { }
+
+        public Order(int id)
+        {
+            var obj = new DatabaseOperations().GetCollection<Order>("orders").FindById(id);
+            Id = obj.Id;
+            Customer = obj.Customer;
+            Products = obj.Products;
+        }
     }
 }

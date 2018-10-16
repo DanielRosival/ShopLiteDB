@@ -11,7 +11,7 @@ namespace ShopIS
 {
     public class DatabaseOperations
     {   
-        public LiteCollection<T> GetCollection<T>(string name)
+        public LiteCollection<T> GetCollection<T>(string name) 
         {
             LiteCollection<T> collection;
             using (var db = new LiteDatabase(ConfigurationManager.AppSettings["ConnectionString"]))

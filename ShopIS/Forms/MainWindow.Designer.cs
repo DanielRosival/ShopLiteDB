@@ -31,6 +31,9 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabCustomers = new System.Windows.Forms.TabPage();
             this.dataGridCustomers = new System.Windows.Forms.DataGridView();
+            this.CustomersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabProducts = new System.Windows.Forms.TabPage();
             this.dataGridProducts = new System.Windows.Forms.DataGridView();
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,9 +52,6 @@
             this.newCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CustomersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridCustomersDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.mainTabControl.SuspendLayout();
             this.tabCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomers)).BeginInit();
@@ -98,7 +98,25 @@
             this.dataGridCustomers.Size = new System.Drawing.Size(758, 408);
             this.dataGridCustomers.TabIndex = 0;
             this.dataGridCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCustomers_CellContentClick);
-            this.dataGridCustomers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCustomers_CellContentDoubleClick);
+            this.dataGridCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCustomers_CellDoubleClick);
+            // 
+            // CustomersID
+            // 
+            this.CustomersID.HeaderText = "Id";
+            this.CustomersID.Name = "CustomersID";
+            this.CustomersID.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "Meno zakaznika";
+            this.CustomerName.Name = "CustomerName";
+            // 
+            // dataGridCustomersDelete
+            // 
+            this.dataGridCustomersDelete.HeaderText = "Vymazat";
+            this.dataGridCustomersDelete.Name = "dataGridCustomersDelete";
+            this.dataGridCustomersDelete.Text = "Delete";
+            this.dataGridCustomersDelete.UseColumnTextForButtonValue = true;
             // 
             // tabProducts
             // 
@@ -126,7 +144,7 @@
             this.dataGridProducts.Size = new System.Drawing.Size(757, 404);
             this.dataGridProducts.TabIndex = 0;
             this.dataGridProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProducts_CellContentClick);
-            this.dataGridProducts.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProducts_CellContentDoubleClick);
+            this.dataGridProducts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProducts_CellDoubleClick);
             // 
             // ProductId
             // 
@@ -182,7 +200,7 @@
             this.dataGridOrders.Size = new System.Drawing.Size(760, 407);
             this.dataGridOrders.TabIndex = 0;
             this.dataGridOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellContentClick);
-            this.dataGridOrders.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellContentDoubleClick);
+            this.dataGridOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellContentDoubleClick);
             // 
             // IdOrder
             // 
@@ -258,25 +276,6 @@
             this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.newOrderToolStripMenuItem.Text = "New order";
             this.newOrderToolStripMenuItem.Click += new System.EventHandler(this.newOrderToolStripMenuItem_Click);
-            // 
-            // CustomersID
-            // 
-            this.CustomersID.HeaderText = "Id";
-            this.CustomersID.Name = "CustomersID";
-            this.CustomersID.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "Meno zakaznika";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // dataGridCustomersDelete
-            // 
-            this.dataGridCustomersDelete.HeaderText = "Vymazat";
-            this.dataGridCustomersDelete.Name = "dataGridCustomersDelete";
-            this.dataGridCustomersDelete.Text = "Delete";
-            this.dataGridCustomersDelete.UseColumnTextForButtonValue = true;
             // 
             // MainWindow
             // 

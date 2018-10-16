@@ -30,7 +30,7 @@ namespace ShopIS.ModelClasses
 
         public bool CheckIfHasOrders()
         {
-            return new DatabaseOperations().GetCollection<Order>("orders").FindAll().Where(x => x.Products.Select(y => y.Id).Contains(Id)).Any();
+            return new DatabaseOperations().GetCollection<Order>("orders").FindAll().Where(x => x.Products.Select(y => y.Id).Contains(Id)).Any();            
         }
     }
 }
