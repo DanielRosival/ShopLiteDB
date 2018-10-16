@@ -30,9 +30,9 @@ namespace ShopIS.Forms
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (tbProductIDs.Text.Equals(string.Empty))
+            if (tbProductIDs.Text.Equals(string.Empty) || (ddlCustomers.SelectedItem as Item) == null)
             {
-                new ErrorForm("Vyplnte produkty").Show();
+                new ErrorForm("Vyplnte produkty a zakaznika").Show();
                 Close();
                 return;
             }
@@ -64,12 +64,10 @@ namespace ShopIS.Forms
             }
             else
             {
-                new DatabaseOperations().UpdateObject("orders", new Order()
-                {
-                    OrderDate = dtPicker.Value,
-                    Customer = new DatabaseOperations().GetCollection<Customer>("customers").FindById((ddlCustomers.SelectedItem as Item).Value),
-                    Products = new DatabaseOperations().GetCollection<Product>("products").FindAll().Where(p => productsIds.Contains(p.Id)).ToList()
-                });
+                OrderObject.OrderDate = dtPicker.Value;
+                OrderObject.Customer = new DatabaseOperations().GetCollection<Customer>("customers").FindById((ddlCustomers.SelectedItem as Item).Value);
+                OrderObject.Products = new DatabaseOperations().GetCollection<Product>("products").FindAll().Where(p => productsIds.Contains(p.Id)).ToList();
+                new DatabaseOperations().UpdateObject("orders", OrderObject);
             }
 
             Close();
