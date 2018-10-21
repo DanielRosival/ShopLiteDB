@@ -12,7 +12,6 @@ namespace ShopIS
         public MainWindow()
         {
             InitializeComponent();
-            //Naloadime vsetko co mame v databaze, ved moze mat niekto nieco ulozene
             ReloadCustomers();
             ReloadProducts();
             ReloadOrders();
